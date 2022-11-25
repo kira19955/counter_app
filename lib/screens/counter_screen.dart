@@ -9,7 +9,7 @@ class CounterScreen extends StatefulWidget {
 
 class _CounterScreenState extends State<CounterScreen> {
 
-    int counter = 10;
+    int counter = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +20,7 @@ class _CounterScreenState extends State<CounterScreen> {
 
     return Scaffold( 
       appBar:AppBar(
+        centerTitle: true,
         title: const Text('CounterScreen'),
         elevation: 0,
       ),
@@ -32,16 +33,47 @@ class _CounterScreenState extends State<CounterScreen> {
           ],
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat ,
-      floatingActionButton:FloatingActionButton(
-        child: const Icon(Icons.add),
-        onPressed: (){
-          counter++;
-          setState(() {
-            
-          });
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton:Row(
+        mainAxisAlignment:MainAxisAlignment.spaceAround,
+        children: [
+          FloatingActionButton(
+            child: const Icon(Icons.exposure_plus_1),
+            onPressed: (){
+              counter++;
+              setState(() {
+                
+              });
+              
+            },
+          ),
           
-        },
+        //  const SizedBox(width: 50,),
+
+          FloatingActionButton(
+            child: const Icon(Icons.restart_alt_outlined),
+            onPressed: (){
+              counter = 0;
+              setState(() {
+                
+              });
+              
+            },
+          ),
+
+         // const SizedBox(width: 50,),
+
+          FloatingActionButton(
+            child: const Icon(Icons.exposure_minus_1),
+            onPressed: (){
+              counter--;
+              setState(() {
+                
+              });
+              
+            },
+          ),
+        ],
       ),
     );
   }
